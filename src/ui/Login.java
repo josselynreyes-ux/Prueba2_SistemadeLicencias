@@ -41,7 +41,6 @@ public class Login extends JFrame{
                 BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE)
         );
 
-
         //btnLogin.addActionListener(e -> Ingresar());
 
 //        void Ingresar(){

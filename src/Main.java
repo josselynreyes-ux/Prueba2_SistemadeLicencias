@@ -1,11 +1,11 @@
 import dao.Connectiondb;
-import ui.Login;
-
+import ui.*;
 import java.sql.Connection;
 
 public class Main{
     public static void main(String [] args){
-       new Login();
+       new MenuAdministrador();
+
 
         // try que se uso para comprobar la conexión
         /* try (Connection cn = Connectiondb.getConnection()) {
