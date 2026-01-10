@@ -54,85 +54,86 @@
             </constraints>
             <properties>
               <background color="-12817000"/>
-              <font name="SansSerif" size="16" style="0"/>
+              <enabled value="true"/>
+              <font name="SansSerif" size="18" style="0"/>
               <foreground color="-394241"/>
               <text value="Registrar Solicitante"/>
             </properties>
           </component>
-          <component id="b33fd" class="javax.swing.JButton" binding="registrarExamenesButton" default-binding="true">
+          <component id="b33fd" class="javax.swing.JButton" binding="btnRegistrarExamenes">
             <constraints>
               <grid row="11" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-12817000"/>
-              <font name="SansSerif" size="16" style="0"/>
+              <font name="SansSerif" size="18" style="0"/>
               <foreground color="-394241"/>
               <text value="Registrar Examenes"/>
             </properties>
           </component>
-          <component id="4c1eb" class="javax.swing.JButton" binding="gestionarTrámitesButton" default-binding="true">
+          <component id="4c1eb" class="javax.swing.JButton" binding="btnGestionTramite">
             <constraints>
               <grid row="13" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-12817000"/>
-              <font name="SansSerif" size="16" style="0"/>
+              <font name="SansSerif" size="18" style="0"/>
               <foreground color="-394241"/>
               <text value="Gestionar Trámites"/>
             </properties>
           </component>
-          <component id="b0fb9" class="javax.swing.JButton" binding="generarLicenciaButton" default-binding="true">
+          <component id="b0fb9" class="javax.swing.JButton" binding="btnGenerarLicencia">
             <constraints>
               <grid row="15" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-12817000"/>
-              <font name="SansSerif" size="16" style="0"/>
+              <font name="SansSerif" size="18" style="0"/>
               <foreground color="-394241"/>
               <text value="Generar Licencia"/>
             </properties>
           </component>
-          <component id="9ffe2" class="javax.swing.JButton" binding="gestionarUsuariosButton" default-binding="true">
+          <component id="9ffe2" class="javax.swing.JButton" binding="btnGestionarUsuarios">
             <constraints>
               <grid row="17" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-12817000"/>
-              <font name="SansSerif" size="16" style="0"/>
+              <font name="SansSerif" size="18" style="0"/>
               <foreground color="-394241"/>
               <text value="Gestionar Usuarios"/>
             </properties>
           </component>
-          <component id="5a323" class="javax.swing.JButton" binding="reportesYEstadísticasButton" default-binding="true">
+          <component id="5a323" class="javax.swing.JButton" binding="btnReportes">
             <constraints>
               <grid row="19" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-12817000"/>
-              <font name="SansSerif" size="16" style="0"/>
+              <font name="SansSerif" size="18" style="0"/>
               <foreground color="-394241"/>
               <text value="Reportes y Estadísticas"/>
             </properties>
           </component>
-          <component id="d3156" class="javax.swing.JButton" binding="cerrarSesionButton" default-binding="true">
+          <component id="d3156" class="javax.swing.JButton" binding="btnCerrarSesion">
             <constraints>
               <grid row="21" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-12817000"/>
-              <font name="SansSerif" size="16" style="0"/>
+              <font name="SansSerif" size="18" style="1"/>
               <foreground color="-394241"/>
               <text value="Cerrar Sesion"/>
             </properties>
           </component>
-          <component id="1d5e1" class="javax.swing.JButton" binding="verificarRequisitosButton" default-binding="true">
+          <component id="1d5e1" class="javax.swing.JButton" binding="btnVerificarRequisitos">
             <constraints>
               <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-12817000"/>
               <enabled value="true"/>
-              <font name="SansSerif" size="16" style="0"/>
+              <font name="SansSerif" size="18" style="0"/>
               <foreground color="-394241"/>
               <text value="Verificar Requisitos"/>
             </properties>
@@ -262,7 +263,9 @@
             <children>
               <vspacer id="d384a">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                    <preferred-size width="-1" height="15"/>
+                  </grid>
                 </constraints>
               </vspacer>
             </children>
@@ -390,14 +393,6 @@
               </hspacer>
             </children>
           </grid>
-          <component id="323bd" class="javax.swing.JLabel" binding="logoLicenseFlow">
-            <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value=""/>
-            </properties>
-          </component>
           <component id="8cfd2" class="javax.swing.JLabel" binding="lblRol">
             <constraints>
               <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
@@ -465,6 +460,14 @@
           <component id="9e53a" class="javax.swing.JLabel" binding="lblCerrarSesion">
             <constraints>
               <grid row="21" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="39e59" class="javax.swing.JLabel" binding="logoLicenseFlow">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value=""/>
