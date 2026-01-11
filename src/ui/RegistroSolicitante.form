@@ -20,7 +20,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="5088d" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+          <component id="5088d" class="javax.swing.JTextField" binding="txtNombreCompleto">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -38,13 +38,15 @@
               <text value="Cédula"/>
             </properties>
           </component>
-          <component id="5b23" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+          <component id="5b23" class="javax.swing.JTextField" binding="txtCedula">
             <constraints>
               <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <text value=""/>
+            </properties>
           </component>
           <component id="40920" class="javax.swing.JLabel">
             <constraints>
@@ -56,7 +58,7 @@
               <text value="Tipo de Licencia"/>
             </properties>
           </component>
-          <component id="e006d" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+          <component id="e006d" class="javax.swing.JComboBox" binding="cbTipoLicencia">
             <constraints>
               <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -76,10 +78,10 @@
             <properties>
               <font name="SansSerif" size="14" style="1"/>
               <foreground color="-16777216"/>
-              <text value="Edad"/>
+              <text value="Fecha de Nacimiento (AA-MM-DD)"/>
             </properties>
           </component>
-          <component id="7cc41" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+          <component id="7cc41" class="javax.swing.JTextField" binding="txtFechaNacimiento">
             <constraints>
               <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -154,13 +156,14 @@
               <text value="Nombre Completo"/>
             </properties>
           </component>
-          <component id="f0f7" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+          <component id="f0f7" class="javax.swing.JTextField" binding="txtFechaSolicitud">
             <constraints>
               <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
             <properties>
+              <editable value="false"/>
               <text value=""/>
             </properties>
           </component>

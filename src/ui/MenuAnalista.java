@@ -2,6 +2,8 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MenuAnalista extends JFrame{
     private JPanel MainPanel;
@@ -16,14 +18,19 @@ public class MenuAnalista extends JFrame{
     private JLabel lblGestionarTramite;
     private JLabel lblCerrarSesion;
     private JLabel lblMenu;
+    private String rol;
 
-    public MenuAnalista() {
+
+
+    public MenuAnalista(String rol) {
+        this.rol=rol;
         setTitle("Inicio de sesion");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1030, 750);
         setContentPane(MainPanel);
         setLocationRelativeTo(null);
         setVisible(true);
+
 
         btnRegistrarSolicitante.setBorder(
                 BorderFactory.createMatteBorder(0, 0, 0, 0, Color.WHITE)
@@ -62,5 +69,38 @@ public class MenuAnalista extends JFrame{
 
         ImageIcon MenuLogo = new ImageIcon(getClass().getResource("/icon/Resumen-Menu.png"));
         lblMenu.setIcon(MenuLogo);
+
+
+        btnRegistrarSolicitante.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new RegistroSolicitante(rol);
+            }
+        });
+
+        btnVerificarRequisitos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new VerificarRequisitos(rol);
+            }
+        });
+
+        btnGestionTramite.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new GestionTramites(rol);
+            }
+        });
+
+        btnCerrarSesion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new Login();
+            }
+        });
     }
 }

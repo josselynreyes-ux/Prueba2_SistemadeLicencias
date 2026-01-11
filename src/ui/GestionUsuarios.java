@@ -1,6 +1,8 @@
 package ui;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GestionUsuarios extends JFrame{
     private JPanel MainPanelGU;
@@ -17,8 +19,10 @@ public class GestionUsuarios extends JFrame{
     private JLabel lblGestionarUsuarios;
     private JTextField textField1;
     private JTextField textField4;
+    private String rol;
 
-    public GestionUsuarios(){
+    public GestionUsuarios(String rol){
+        this.rol = rol;
         setTitle("");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(570, 500);
@@ -28,6 +32,14 @@ public class GestionUsuarios extends JFrame{
 
         ImageIcon logogestionarUser = new ImageIcon(getClass().getResource("/icon/gestionar-usuarios.png"));
         lblGestionarUsuarios.setIcon(logogestionarUser);
+
+        regresarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new MenuAdministrador(rol);
+            }
+        });
     }
 
 }

@@ -1,6 +1,8 @@
 package ui;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GenerarLicencia extends JFrame{
     private JPanel MainPanelGL;
@@ -11,8 +13,10 @@ public class GenerarLicencia extends JFrame{
     private JButton exportarPDFButton;
     private JButton regresarButton;
     private JLabel lblGenerarLicense;
+    public String rol;
 
-    public GenerarLicencia(){
+    public GenerarLicencia(String rol){
+        this.rol=rol;
         setTitle("");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500, 300);
@@ -23,5 +27,16 @@ public class GenerarLicencia extends JFrame{
         ImageIcon genlicencialogo = new ImageIcon(getClass().getResource("/icon/logo-generarlicense.png"));
         lblGenerarLicense.setIcon(genlicencialogo);
 
+        regresarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if ("ADMIN".equalsIgnoreCase(rol)) {
+                    new GestionTramites(rol).setVisible(true);
+                } else if ("ANALISTA".equalsIgnoreCase(rol)) {
+                    new GestionTramites(rol).setVisible(true);
+                }
+                dispose();
+            }
+        });
     }
 }

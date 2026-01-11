@@ -123,7 +123,7 @@
                   </grid>
                 </constraints>
               </vspacer>
-              <component id="a13e" class="javax.swing.JPasswordField" binding="txtPassword">
+              <component id="a13e" class="javax.swing.JPasswordField" binding="txtPass">
                 <constraints>
                   <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="30"/>
@@ -149,19 +149,6 @@
                   </grid>
                 </constraints>
               </vspacer>
-              <component id="89c19" class="javax.swing.JButton" binding="btnLogin">
-                <constraints>
-                  <grid row="11" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                    <preferred-size width="2" height="2"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <background color="-12420953"/>
-                  <font name="SansSerif" size="14" style="1"/>
-                  <foreground color="-394241"/>
-                  <text value="Iniciar sesion"/>
-                </properties>
-              </component>
               <hspacer id="90436">
                 <constraints>
                   <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
@@ -192,7 +179,7 @@
                   <text value=""/>
                 </properties>
               </component>
-              <component id="cfe8f" class="javax.swing.JTextField" binding="txtUsuario">
+              <component id="cfe8f" class="javax.swing.JTextField" binding="txtUser">
                 <constraints>
                   <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="40"/>
@@ -202,6 +189,19 @@
                 <properties>
                   <background color="-12817000"/>
                   <foreground color="-328705"/>
+                </properties>
+              </component>
+              <component id="89c19" class="javax.swing.JButton" binding="btnLogin">
+                <constraints>
+                  <grid row="11" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="2" height="2"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-12420953"/>
+                  <font name="SansSerif" size="14" style="1"/>
+                  <foreground color="-394241"/>
+                  <text value="Iniciar sesion"/>
                 </properties>
               </component>
             </children>

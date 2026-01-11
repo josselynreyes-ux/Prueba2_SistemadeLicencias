@@ -1,19 +1,25 @@
 package ui;
 
+import dao.Connectiondb;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class Login extends JFrame{
     private JPanel MainPanel;
     private JLabel iconLogo;
-    private JTextField txtUsuario;
-    private JPasswordField txtPassword;
+    private JTextField txtUser;
+    private JPasswordField txtPass;
     private JButton btnLogin;
     private JLabel userLogo;
     private JLabel contraLogo;
     private JLabel icon;
+    private int intentos = 0;
+
 
 
     public Login(){
@@ -29,8 +35,8 @@ public class Login extends JFrame{
         ImageIcon jujopass = new ImageIcon(getClass().getResource("/icon/LoginLogo01.png"));
         iconLogo.setIcon(jujopass);
 
-        txtUsuario.setBorder(null);
-        txtPassword.setBorder(null);
+        txtUser.setBorder(null);
+        txtPass.setBorder(null);
 
         ImageIcon userlogo = new ImageIcon(getClass().getResource("/icon/usuario.png"));
         userLogo.setIcon(userlogo);
@@ -38,47 +44,94 @@ public class Login extends JFrame{
         ImageIcon contralogo = new ImageIcon(getClass().getResource("/icon/clave.png"));
         contraLogo.setIcon(contralogo);
 
-        txtUsuario.setBorder(
+        txtUser.setBorder(
                 BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE)
         );
 
-        txtPassword.setBorder(
+        txtPass.setBorder(
                 BorderFactory.createMatteBorder(0, 0, 2, 0, Color.WHITE)
         );
-
-        //btnLogin.addActionListener(e -> Ingresar());
-
-//        void Ingresar(){
-//
-//            String user = txtUsuario.getText();
-//            String clave = pClave.getText();
-//
-//            try{
-//               Connection cn = Connectiondb.getConnection();
-//               PreparedStatement ps = cn.prepareStatement( "select * from usuarios where nombre = ? and contraseña=?");
-//               ps.setString(1,user);
-//               ps.setString(2 ,clave);
-//
-//               //Ejecuta la consulta en la base de d datos y guarda dicha consulta en rs
-//               ResultSet rs = ps.executeQuery();
-//
-//               //comprobamos que exista dicho usuario devolviendo true or false
-//               if (rs.next()){
-//                   String rol = rs.getString("rol");
-//
-//                   this.setVisible(false);
-//                   if (rol.equals(""))
-//               }
-//
-//            }
 
         btnLogin.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                new MenuAnalista();
+            public void actionPerformed(ActionEvent evt) {
+                realizarLogin();
             }
         });
+
+        setVisible(true);
     }
 
+        // ---- LÓGICA DE LOGIN ----
+        private void realizarLogin() {
+            String user = txtUser.getText().trim();
+            String pass = new String(txtPass.getPassword());
 
+            if (user.isEmpty() || pass.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Ingrese usuario y contraseña");
+                return;
+            }
+
+            try (Connection cn = Connectiondb.getConnection()) {
+
+                String sql = "SELECT contrasena, rol, estado " +
+                        "FROM usuario WHERE username = ?";
+                PreparedStatement ps = cn.prepareStatement(sql);
+                ps.setString(1, user);
+                ResultSet rs = ps.executeQuery();
+
+                if (!rs.next()) {
+                    manejarErrorCredenciales();
+                    return;
+                }
+
+                String passBD = rs.getString("contrasena");
+                String rol    = rs.getString("rol");
+                String estado = rs.getString("estado");
+
+                // Comparación simple (texto plano)
+                if (!pass.equals(passBD)) {
+                    manejarErrorCredenciales();
+                    return;
+                }
+
+                if (!"ACTIVO".equalsIgnoreCase(estado)) {
+                    JOptionPane.showMessageDialog(this, "Usuario inactivo");
+                    return;
+                }
+
+                abrirFormularioPorRol(rol);
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Error de conexión: " + ex.getMessage());
+            }
+
+
+        }
+
+        private void manejarErrorCredenciales() {
+            intentos++;
+            if (intentos >= 3) {
+                JOptionPane.showMessageDialog(this, "Máximo de intentos alcanzado");
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Usuario o contraseña incorrectos. Intento " + intentos + " de 3");
+            }
+        }
+
+    private void abrirFormularioPorRol(String rol) {
+        if ("ADMIN".equalsIgnoreCase(rol)) {
+            new MenuAdministrador(rol).setVisible(true);
+        } else if ("ANALISTA".equalsIgnoreCase(rol)) {
+            new MenuAnalista(rol).setVisible(true);  // <--- aquí usas el nuevo constructor
+        } else {
+            JOptionPane.showMessageDialog(null, "Rol no reconocido: " + rol);
+            return;
+        }
+        dispose();
     }
+
+}
+
+

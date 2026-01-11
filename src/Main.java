@@ -10,7 +10,7 @@ public class Main{
 
         //new GestionUsuarios(); //LISTO
 
-        //new RegistrarExamenes(); //LISTO
+        //new RegistrarExamenes("ADMIN"); //LISTO
 
         //new GenerarLicencia(); //LISTO
 
@@ -18,20 +18,19 @@ public class Main{
 
         //new MenuAnalista(); //LISTO
 
-        //new VerificarRequisitos(); //LISTO
+        //new VerificarRequisitos("ADMIN"); //LISTO
 
-        //new RegistroSolicitante();//LISTO
+        //new RegistroSolicitante("ADMIN");//LISTO
 
         //new Login(); //LISTO
 
-
         //try que se uso para comprobar la conexión
 
-        try (Connection cn = Connectiondb.getConnection()) {
-            System.out.println("Conexión OK");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try (Connection cn = Connectiondb.getConnection()) {
+//            System.out.println("Conexión OK");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 }
 

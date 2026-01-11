@@ -1,6 +1,8 @@
 package ui;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ReportesyEstadisticas extends JFrame{
     private JPanel MainPanelRE;
@@ -15,8 +17,11 @@ public class ReportesyEstadisticas extends JFrame{
     private JLabel lblTotalesSolicitudes;
     private JTable table1;
     private JLabel iconRE;
+    private JButton btnRegresar;
+    public String rol;
 
-    public ReportesyEstadisticas(){
+    public ReportesyEstadisticas(String rol){
+        this.rol=rol;
         setTitle("");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(650, 600);
@@ -26,5 +31,13 @@ public class ReportesyEstadisticas extends JFrame{
 
         ImageIcon relogo = new ImageIcon(getClass().getResource("/icon/reporteestadisticas.png"));
         iconRE.setIcon(relogo);
+
+        btnRegresar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new MenuAdministrador(rol);
+            }
+        });
     }
 }

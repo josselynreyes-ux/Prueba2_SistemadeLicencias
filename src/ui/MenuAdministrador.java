@@ -2,6 +2,8 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MenuAdministrador extends JFrame{
 
@@ -21,8 +23,10 @@ public class MenuAdministrador extends JFrame{
     private JLabel lblGestionarUsuarios;
     private JLabel lblReportes;
     private JLabel lblMenu;
+    public String rol;
 
-    public MenuAdministrador(){
+    public MenuAdministrador(String rol){
+        this.rol=rol;
         setTitle("");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1030, 750);
@@ -30,6 +34,7 @@ public class MenuAdministrador extends JFrame{
         setLocationRelativeTo(null);
         setVisible(true);
 
+        //ESTILOS QUE SE DIERON A LOS BOTONES
         btnRegistrarSolicitante.setBorder(
                 BorderFactory.createMatteBorder(0, 0, 0, 0, Color.WHITE)
         );
@@ -54,6 +59,7 @@ public class MenuAdministrador extends JFrame{
                 BorderFactory.createMatteBorder(0, 0, 0, 0, Color.WHITE)
         );
 
+        // IMAGENES QUE SE USARON PARA EL MENU
         ImageIcon admilogo = new ImageIcon(getClass().getResource("/icon/logLicFlow.png"));
         logoLicenseFlow.setIcon(admilogo);
 
@@ -81,5 +87,56 @@ public class MenuAdministrador extends JFrame{
         ImageIcon MenuLogo = new ImageIcon(getClass().getResource("/icon/Resumen-Menu.png"));
         lblMenu.setIcon(MenuLogo);
 
+        //ACCIONES QUE REALIZARAN LOS BOTONES DEL FORMULARIO ADMINISTRADOR
+
+        btnRegistrarSolicitante.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new RegistroSolicitante(rol);
+
+            }
+        });
+
+        btnVerificarRequisitos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new VerificarRequisitos(rol);
+            }
+        });
+
+        btnGestionTramite.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+               new GestionTramites(rol);
+            }
+        });
+
+
+        btnGestionarUsuarios.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new GestionUsuarios(rol);
+            }
+        });
+
+        btnReportes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new ReportesyEstadisticas(rol);
+            }
+        });
+
+        btnCerrarSesion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new Login();
+            }
+        });
     }
 }

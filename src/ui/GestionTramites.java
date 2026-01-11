@@ -1,6 +1,8 @@
 package ui;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GestionTramites extends JFrame{
     private JPanel MainPanelGT;
@@ -19,8 +21,11 @@ public class GestionTramites extends JFrame{
     private JLabel lblDechaSolicitud;
     private JLabel lblEstado;
     private JButton limpiarButton;
+    private JButton btnRegresar;
+    public String rol;
 
-    public GestionTramites(){
+    public GestionTramites(String rol){
+        this.rol=rol;
         setTitle("");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(960, 700);
@@ -30,5 +35,23 @@ public class GestionTramites extends JFrame{
 
         ImageIcon gestiontramitlogo = new ImageIcon(getClass().getResource("/icon/logo-gestiontramites.png"));
         lblGestionarTramites.setIcon(gestiontramitlogo);
+
+        registrarExamenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        btnRegresar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if ("ADMIN".equalsIgnoreCase(rol)) {
+                    new MenuAdministrador(rol).setVisible(true);
+                } else if ("ANALISTA".equalsIgnoreCase(rol)) {
+                    new MenuAnalista(rol).setVisible(true);
+                }
+                dispose();
+            }
+        });
     }
 }

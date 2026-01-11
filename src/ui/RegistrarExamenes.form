@@ -28,7 +28,7 @@
               <text value="Cédula"/>
             </properties>
           </component>
-          <component id="9c574" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+          <component id="9c574" class="javax.swing.JTextField" binding="txtCedula">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -70,7 +70,7 @@
                   <text value="Nota Práctica:"/>
                 </properties>
               </component>
-              <component id="ad5df" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+              <component id="ad5df" class="javax.swing.JTextField" binding="txtNotaTeorica">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -81,7 +81,7 @@
                   <font name="SansSerif" size="14" style="0"/>
                 </properties>
               </component>
-              <component id="11268" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+              <component id="11268" class="javax.swing.JTextField" binding="txtNotaPractica">
                 <constraints>
                   <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
