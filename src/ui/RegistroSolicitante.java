@@ -12,17 +12,18 @@ public class RegistroSolicitante extends JFrame{
     private JButton guardarButton;
     private JButton limpiarButton;
     private JButton regresarButton;
+    private JLabel lblRegistrarSolicitante;
     private JLabel lblRegistroUser;
 
     public RegistroSolicitante(){
         setTitle("");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(500, 600);
+        setSize(500, 500);
         setContentPane(MainPanelRS);
         setLocationRelativeTo(null);
         setVisible(true);
 
         ImageIcon registroUslogo = new ImageIcon(getClass().getResource("/icon/registraruser.png"));
-        lblRegistroUser.setIcon(registroUslogo);
+        lblRegistrarSolicitante.setIcon(registroUslogo);
     }
 }

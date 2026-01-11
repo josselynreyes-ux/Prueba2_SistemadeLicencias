@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="ui.RegistrarExamenes">
-  <grid id="27dc6" binding="MainPanelRE" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GenerarLicencia">
+  <grid id="27dc6" binding="MainPanelGL" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="474"/>
+      <xy x="20" y="20" width="552" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="66d3c" layout-manager="GridLayoutManager" row-count="7" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="16fa2" layout-manager="GridLayoutManager" row-count="6" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -18,61 +18,60 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="96ad2" class="javax.swing.JLabel">
+          <component id="1398a" class="javax.swing.JLabel">
             <constraints>
               <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <font name="SansSerif" size="14" style="1"/>
               <foreground color="-16777216"/>
               <text value="Cédula"/>
             </properties>
           </component>
-          <component id="9c574" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+          <component id="2cbba" class="javax.swing.JTextField" binding="textField1" default-binding="true">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
             <properties>
-              <background color="-1"/>
               <font name="SansSerif" size="14" style="0"/>
             </properties>
           </component>
-          <grid id="9b1c5" layout-manager="GridLayoutManager" row-count="2" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="2fd33" layout-manager="GridLayoutManager" row-count="2" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-1"/>
-              <enabled value="false"/>
             </properties>
             <border type="none"/>
             <children>
-              <component id="866ce" class="javax.swing.JLabel">
+              <component id="c39f9" class="javax.swing.JLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font name="SansSerif" size="14" style="1"/>
                   <foreground color="-16777216"/>
-                  <text value="Nota Teórica:"/>
+                  <text value="Fecha de Emisión"/>
                 </properties>
               </component>
-              <component id="9d16a" class="javax.swing.JLabel">
+              <component id="69d4f" class="javax.swing.JLabel">
                 <constraints>
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font name="SansSerif" size="14" style="1"/>
                   <foreground color="-16777216"/>
-                  <text value="Nota Práctica:"/>
+                  <text value="Fecha de Vencimiento"/>
                 </properties>
               </component>
-              <component id="ad5df" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+              <component id="9f890" class="javax.swing.JTextField" binding="textField2" default-binding="true">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
@@ -80,9 +79,9 @@
                   <font name="SansSerif" size="14" style="0"/>
                 </properties>
               </component>
-              <component id="11268" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+              <component id="51149" class="javax.swing.JTextField" binding="textField3" default-binding="true">
                 <constraints>
-                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="1" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
@@ -90,29 +89,29 @@
                   <font name="SansSerif" size="14" style="0"/>
                 </properties>
               </component>
-              <component id="75013" class="javax.swing.JLabel">
+              <component id="8ac5e" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font name="SansSerif" size="14" style="0"/>
                   <foreground color="-16777216"/>
-                  <text value="/20"/>
+                  <text value="(AA-MM-DD)"/>
                 </properties>
               </component>
-              <component id="90523" class="javax.swing.JLabel">
+              <component id="2173d" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font name="SansSerif" size="14" style="0"/>
                   <foreground color="-16777216"/>
-                  <text value="/20"/>
+                  <text value="(AA-MM-DD)"/>
                 </properties>
               </component>
             </children>
           </grid>
-          <grid id="59c" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="87d86" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -122,20 +121,20 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="7d842" class="javax.swing.JButton" binding="guardarButton" default-binding="true">
+              <component id="5caf1" class="javax.swing.JButton" binding="generarLicenciaButton" default-binding="true">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-12817000"/>
                   <font name="SansSerif" size="12" style="1"/>
                   <foreground color="-16777216"/>
-                  <text value="Guardar"/>
+                  <text value="Generar Licencia"/>
                 </properties>
               </component>
-              <component id="b5e55" class="javax.swing.JButton" binding="regresarButton" default-binding="true">
+              <component id="634ed" class="javax.swing.JButton" binding="regresarButton" default-binding="true">
                 <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font name="SansSerif" size="12" style="1"/>
@@ -143,63 +142,57 @@
                   <text value="Regresar"/>
                 </properties>
               </component>
-            </children>
-          </grid>
-          <vspacer id="bd05d">
-            <constraints>
-              <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
-          <grid id="a32ed" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints>
-              <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties/>
-            <border type="none"/>
-            <children>
-              <hspacer id="92950">
+              <component id="10e5a" class="javax.swing.JButton" binding="exportarPDFButton" default-binding="true">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
-              </hspacer>
+                <properties>
+                  <background color="-10315929"/>
+                  <font name="SansSerif" size="12" style="1"/>
+                  <foreground color="-16777216"/>
+                  <text value="Exportar PDF"/>
+                </properties>
+              </component>
             </children>
           </grid>
-          <grid id="d742" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints>
-              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties/>
-            <border type="none"/>
-            <children>
-              <hspacer id="dd72">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </hspacer>
-            </children>
-          </grid>
-          <grid id="c51fa" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="689b5" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <background color="-328705"/>
+              <background color="-394241"/>
             </properties>
             <border type="none"/>
             <children>
-              <vspacer id="b63c1">
+              <vspacer id="49901">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
             </children>
           </grid>
+          <grid id="9b5b2" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <grid id="431a6" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
         </children>
       </grid>
-      <grid id="c76f5" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="15585" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -209,7 +202,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <grid id="f1424" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="52799" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -219,29 +212,29 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="45e79" class="javax.swing.JLabel">
+              <component id="a30f3" class="javax.swing.JLabel">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <font name="SansSerif" size="18" style="1"/>
                   <foreground color="-1"/>
-                  <text value="Registro de Examenes"/>
+                  <text value="Generar Licencia"/>
                 </properties>
               </component>
-              <vspacer id="4e8b8">
+              <vspacer id="66a71">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
-              <vspacer id="823">
+              <vspacer id="5d829">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
             </children>
           </grid>
-          <component id="b234e" class="javax.swing.JLabel" binding="lblRegistrarExam">
+          <component id="2f431" class="javax.swing.JLabel" binding="lblGenerarLicense">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -249,7 +242,7 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="c3605" class="javax.swing.JLabel">
+          <component id="39ec9" class="javax.swing.JLabel">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>

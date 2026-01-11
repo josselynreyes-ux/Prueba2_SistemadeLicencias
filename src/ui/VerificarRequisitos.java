@@ -1,7 +1,6 @@
 package ui;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class VerificarRequisitos extends JFrame{
     private JPanel MainPanelVR;
@@ -9,15 +8,15 @@ public class VerificarRequisitos extends JFrame{
     private JCheckBox pagoCheckBox;
     private JCheckBox multasCheckBox;
     private JTextArea txtaObservaciones;
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
+    private JButton aprobarRequisitosButton;
+    private JButton rechazarRequisitosButton;
+    private JButton regresarButton;
     private JLabel lblVerificarRequisitos;
 
     public VerificarRequisitos(){
         setTitle("");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(500, 600);
+        setSize(500, 400);
         setContentPane(MainPanelVR);
         setLocationRelativeTo(null);
         setVisible(true);
