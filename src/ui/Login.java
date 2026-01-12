@@ -62,75 +62,94 @@ public class Login extends JFrame{
         setVisible(true);
     }
 
-        // ---- LÓGICA DE LOGIN ----
-        private void realizarLogin() {
-            String user = txtUser.getText().trim();
-            String pass = new String(txtPass.getPassword());
+    // ======= LOGIN CON BLOQUEO A LOS 3 INTENTOS =======
 
-            if (user.isEmpty() || pass.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Ingrese usuario y contraseña");
+    // ---- LÓGICA DE LOGIN ----
+    private void realizarLogin() {
+        String user = txtUser.getText().trim();
+        String pass = new String(txtPass.getPassword());
+
+        if (user.isEmpty() || pass.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese usuario y contraseña");
+            return;
+        }
+
+        try (java.sql.Connection cn = dao.Connectiondb.getConnection()) {
+
+            String sql = "SELECT contrasena, rol, estado FROM usuario WHERE username = ?";
+            java.sql.PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setString(1, user);
+            java.sql.ResultSet rs = ps.executeQuery();
+
+            if (!rs.next()) {
+                manejarErrorCredenciales(user);
                 return;
             }
 
-            try (Connection cn = Connectiondb.getConnection()) {
+            String passBD = rs.getString("contrasena");
+            String rol    = rs.getString("rol");
+            String estado = rs.getString("estado");
 
-                String sql = "SELECT contrasena, rol, estado " +
-                        "FROM usuario WHERE username = ?";
-                PreparedStatement ps = cn.prepareStatement(sql);
-                ps.setString(1, user);
-                ResultSet rs = ps.executeQuery();
-
-                if (!rs.next()) {
-                    manejarErrorCredenciales();
-                    return;
-                }
-
-                String passBD = rs.getString("contrasena");
-                String rol    = rs.getString("rol");
-                String estado = rs.getString("estado");
-
-                // Comparación simple (texto plano)
-                if (!pass.equals(passBD)) {
-                    manejarErrorCredenciales();
-                    return;
-                }
-
-                if (!"ACTIVO".equalsIgnoreCase(estado)) {
-                    JOptionPane.showMessageDialog(this, "Usuario inactivo");
-                    return;
-                }
-
-                abrirFormularioPorRol(rol);
-
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "Error de conexión: " + ex.getMessage());
+            // 1) Si está INACTIVO, bloquear de una (no comparar contraseña)
+            if (!"ACTIVO".equalsIgnoreCase(estado)) {
+                JOptionPane.showMessageDialog(null, "Usuario inactivo. Contacte al administrador.");
+                return;
             }
 
-
-        }
-
-        private void manejarErrorCredenciales() {
-            intentos++;
-            if (intentos >= 3) {
-                JOptionPane.showMessageDialog(this, "Máximo de intentos alcanzado");
-                dispose();
-            } else {
-                JOptionPane.showMessageDialog(this,
-                        "Usuario o contraseña incorrectos. Intento " + intentos + " de 3");
+            // 2) Comparación simple (texto plano)
+            if (!pass.equals(passBD)) {
+                manejarErrorCredenciales(user);
+                return;
             }
+
+            // Login correcto: reset intentos y abrir
+            intentos = 0;
+            abrirFormularioPorRol(rol);
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexión: " + ex.getMessage());
         }
+    }
+
+    private void manejarErrorCredenciales(String username) {
+        intentos++;
+
+        if (intentos >= 3) {
+            bloquearUsuario(username);
+            JOptionPane.showMessageDialog(null,
+                    "Máximo de intentos alcanzado.\nUsuario bloqueado (INACTIVO). Contacte al administrador.");
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "Usuario o contraseña incorrectos. Intento " + intentos + " de 3");
+        }
+    }
+
+    private void bloquearUsuario(String username) {
+        try (java.sql.Connection cn = dao.Connectiondb.getConnection()) {
+
+            String sql = "UPDATE usuario SET estado = 'INACTIVO' WHERE username = ?";
+            java.sql.PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.executeUpdate(); // UPDATE con JDBC [web:162]
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo bloquear el usuario: " + e.getMessage());
+        }
+    }
 
     private void abrirFormularioPorRol(String rol) {
         if ("ADMIN".equalsIgnoreCase(rol)) {
             new MenuAdministrador(rol).setVisible(true);
         } else if ("ANALISTA".equalsIgnoreCase(rol)) {
-            new MenuAnalista(rol).setVisible(true);  // <--- aquí usas el nuevo constructor
+            new MenuAnalista(rol).setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Rol no reconocido: " + rol);
             return;
         }
         dispose();
     }
+
 
 }
 

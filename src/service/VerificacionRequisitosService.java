@@ -1,4 +1,5 @@
 package service;
+
 import dao.Connectiondb;
 import dao.TramiteDAO;
 
@@ -6,25 +7,31 @@ import java.sql.Connection;
 
 public class VerificacionRequisitosService {
 
-    private TramiteDAO tramiteDAO = new TramiteDAO();
+    private final TramiteDAO tramiteDAO = new TramiteDAO();
 
     public void aprobarPorCedula(String cedula, boolean certMed, boolean pago, boolean sinMultas, String obs) throws Exception {
 
-        if (cedula == null || !cedula.matches("\\d{10}")) { // 10 dígitos
+        if (cedula == null || !cedula.matches("\\d{10}")) {
             throw new IllegalArgumentException("Cédula inválida. Debe tener 10 números.");
         }
         if (!certMed || !pago || !sinMultas) {
             throw new IllegalArgumentException("Para aprobar, marque: Certificado médico, Pago y Sin multas.");
         }
 
-
+        // Nota: este Connection queda, aunque ahora TramiteDAO abre su propia conexión.
+        // Si quieres transacción real, habría que modificar TramiteDAO para recibir Connection.
         try (Connection cn = Connectiondb.getConnection()) {
             cn.setAutoCommit(false);
             try {
-                Integer tramiteId = tramiteDAO.obtenerTramiteIdPorCedula(cn, cedula);
-                if (tramiteId == null) throw new IllegalArgumentException("No existe trámite para esa cédula.");
+                Integer tramiteId = tramiteDAO.obtenerTramiteIdPorCedula(cedula);
+                if (tramiteId == null) {
+                    throw new IllegalArgumentException("No existe trámite para esa cédula.");
+                }
 
-                tramiteDAO.actualizarRequisitos(cn, tramiteId, certMed, pago, sinMultas, obs, "EN_EXAMENES");
+                // Actualiza SOLO requisitos (según método actual del DAO)
+                boolean ok = tramiteDAO.actualizarRequisitos(tramiteId, certMed, pago, sinMultas, obs);
+                if (!ok) throw new IllegalArgumentException("No se pudo actualizar requisitos.");
+
                 cn.commit();
             } catch (Exception e) {
                 cn.rollback();
@@ -37,11 +44,12 @@ public class VerificacionRequisitosService {
 
     public void rechazarPorCedula(String cedula, boolean certMed, boolean pago, boolean sinMultas, String obs) throws Exception {
 
-        if (cedula == null || !cedula.matches("\\d{10}")) { // 10 dígitos
+        if (cedula == null || !cedula.matches("\\d{10}")) {
             throw new IllegalArgumentException("Cédula inválida. Debe tener 10 números.");
         }
 
-        if (certMed || pago || sinMultas) {
+        // Regla que pusiste
+        if (certMed && pago && sinMultas) {
             throw new IllegalArgumentException("No se puede rechazar si todos los requisitos están marcados. Use Aprobar.");
         }
 
@@ -52,14 +60,17 @@ public class VerificacionRequisitosService {
         try (Connection cn = Connectiondb.getConnection()) {
             cn.setAutoCommit(false);
             try {
-                Integer tramiteId = tramiteDAO.obtenerTramiteIdPorCedula(cn, cedula);
-                if (tramiteId == null) throw new IllegalArgumentException("No existe trámite para esa cédula.");
+                Integer tramiteId = tramiteDAO.obtenerTramiteIdPorCedula(cedula);
+                if (tramiteId == null) {
+                    throw new IllegalArgumentException("No existe trámite para esa cédula.");
+                }
 
-                // Si rechazas, puedes dejarlo en PENDIENTE (o crear un estado RECHAZADO si lo deseas)
-                tramiteDAO.actualizarRequisitos(cn, tramiteId, certMed, pago, sinMultas, obs, "PENDIENTE");
-                cn.commit(); // [web:54]
+                boolean ok = tramiteDAO.actualizarRequisitos(tramiteId, certMed, pago, sinMultas, obs);
+                if (!ok) throw new IllegalArgumentException("No se pudo actualizar requisitos.");
+
+                cn.commit();
             } catch (Exception e) {
-                cn.rollback(); // [web:54]
+                cn.rollback();
                 throw e;
             } finally {
                 cn.setAutoCommit(true);
