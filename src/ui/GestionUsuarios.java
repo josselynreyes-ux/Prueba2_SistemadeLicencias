@@ -27,7 +27,7 @@ public class GestionUsuarios extends JFrame {
         this.rol = rol;
         setTitle("");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(570, 500);
+        setSize(585, 500);
         setContentPane(MainPanelGU);
         setLocationRelativeTo(null);
         setVisible(true);

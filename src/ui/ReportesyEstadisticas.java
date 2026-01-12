@@ -38,15 +38,15 @@ public class ReportesyEstadisticas extends JFrame {
         ImageIcon relogo = new ImageIcon(getClass().getResource("/icon/reporteestadisticas.png"));
         iconRE.setIcon(relogo);
 
-        // Modelo de tabla con columnas exactas
+
         table1.setModel(new DefaultTableModel(
                 new Object[]{"ID", "CEDULA", "NOMBRE", "TIPO", "FECHA SOLICITUD", "ESTADO"}, 0
         ));
 
-        // Total inicia en 0
+
         lblMostrarTotalLicencias.setText("0");
 
-        // Listeners
+
         btnRegresar.addActionListener(e -> {
             dispose();
             new MenuAdministrador(rol);
@@ -119,6 +119,6 @@ public class ReportesyEstadisticas extends JFrame {
         }
         Object id = table1.getValueAt(row, 0);
         JOptionPane.showMessageDialog(this, "ID seleccionado: " + id);
-        // Aquí conectas tu ventana detalle cuando la tengas.
+
     }
 }

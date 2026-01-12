@@ -5,7 +5,7 @@ public class Usuario {
     private String nombre;
     private String username;
     private String cedula;
-    private String contrasena; // columna BD: contrasena
+    private String contrasena;
     private String rol;        // "ADMIN" o "ANALISTA"
     private String estado;     // "ACTIVO" o "INACTIVO"
 

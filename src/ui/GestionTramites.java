@@ -35,13 +35,13 @@ public class GestionTramites extends JFrame{
         setLocationRelativeTo(null);
         setVisible(true);
 
-        // 1) Crear el modelo de la tabla con las columnas
+
         model = new javax.swing.table.DefaultTableModel(
                 new Object[]{"ID", "Cédula", "Nombre", "Tipo", "Fecha", "Estado"}, 0
         ) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // no permite editar [web:584]
+                return false;
             }
         };
 
@@ -51,29 +51,28 @@ public class GestionTramites extends JFrame{
         table1.getSelectionModel().addListSelectionListener(e -> {
             if (e.getValueIsAdjusting())
                 return;
-            // evita que se dispare dos veces mientras seleccionas [web:535]
+
 
             int row = table1.getSelectedRow();
             if (row == -1)
                 return;
 
-            // estos índices dependen del orden de columnas
-            // {"ID", "Cédula", "Nombre", "Tipo", "Fecha", "Estado"}
+
             String cedula = table1.getValueAt(row, 1).toString();
             String nombre = table1.getValueAt(row, 2).toString();
             String tipo   = table1.getValueAt(row, 3).toString();
             String fecha  = table1.getValueAt(row, 4).toString();
             String estado = table1.getValueAt(row, 5).toString();
 
-            // Llenar panel de detalle
-            lblCedula.setText(cedula);            // cambia texto del JLabel
+
+            lblCedula.setText(cedula);
             lblNombreCompleto.setText(nombre);
             lblTipoLicencia.setText(tipo);
             lblDechaSolicitud.setText(fecha);
             lblEstado.setText(estado);
         });
 
-        //cargar tabla al iniciar
+
         try {
             gtService.cargar(model, "TODOS");
         } catch (Exception ex) {
@@ -104,7 +103,7 @@ public class GestionTramites extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    String estadoSeleccionado = String.valueOf(comboBox1.getSelectedItem()); // [web:122]
+                    String estadoSeleccionado = String.valueOf(comboBox1.getSelectedItem());
                     gtService.cargar(model, estadoSeleccionado);
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -122,7 +121,7 @@ public class GestionTramites extends JFrame{
                 lblDechaSolicitud.setText("");
                 lblEstado.setText("");
 
-                // quitar selección de la tabla
+
                 table1.clearSelection();
             }
         });

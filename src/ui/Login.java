@@ -62,9 +62,7 @@ public class Login extends JFrame{
         setVisible(true);
     }
 
-    // ======= LOGIN CON BLOQUEO A LOS 3 INTENTOS =======
 
-    // ---- LÓGICA DE LOGIN ----
     private void realizarLogin() {
         String user = txtUser.getText().trim();
         String pass = new String(txtPass.getPassword());
@@ -96,13 +94,11 @@ public class Login extends JFrame{
                 return;
             }
 
-            // 2) Comparación simple (texto plano)
             if (!pass.equals(passBD)) {
                 manejarErrorCredenciales(user);
                 return;
             }
 
-            // Login correcto: reset intentos y abrir
             intentos = 0;
             abrirFormularioPorRol(rol);
 
@@ -131,7 +127,7 @@ public class Login extends JFrame{
             String sql = "UPDATE usuario SET estado = 'INACTIVO' WHERE username = ?";
             java.sql.PreparedStatement ps = cn.prepareStatement(sql);
             ps.setString(1, username);
-            ps.executeUpdate(); // UPDATE con JDBC [web:162]
+            ps.executeUpdate();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se pudo bloquear el usuario: " + e.getMessage());

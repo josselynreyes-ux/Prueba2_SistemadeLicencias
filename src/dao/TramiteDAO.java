@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TramiteDAO {
 
-    // Reportes: lista de trámites para JTable
+
     public List<TramiteRow> listarParaReporte(String fechaInicio, String fechaFin, String estado, String tipo) {
         List<TramiteRow> list = new ArrayList<>();
 
@@ -63,7 +63,7 @@ public class TramiteDAO {
         return list;
     }
 
-    // Para otros módulos: obtener tramite.id por cédula (abre su propia conexión)
+
     public Integer obtenerTramiteIdPorCedula(String cedula) {
         String sql =
                 "SELECT t.id " +
@@ -86,7 +86,7 @@ public class TramiteDAO {
         return null;
     }
 
-    // Overload: para código que ya usa transacciones y pasa Connection (para que NO te falle ExamenService)
+
     public Integer obtenerTramiteIdPorCedula(Connection cn, String cedula) {
         String sql =
                 "SELECT t.id " +
@@ -106,14 +106,15 @@ public class TramiteDAO {
         return null;
     }
 
-    // Actualizar requisitos (abre su propia conexión)
+
     public boolean actualizarRequisitos(int tramiteId,
                                         boolean certificadoMedico,
                                         boolean pago,
                                         boolean sinMultas,
-                                        String observaciones) {
+                                        String observaciones,
+                                        String nuevoEstado) {
         String sql =
-                "UPDATE tramite SET certificadoMedico = ?, pago = ?, sinMultas = ?, observaciones = ? " +
+                "UPDATE tramite SET certificadoMedico = ?, pago = ?, sinMultas = ?, observaciones = ?, estado = ? " +
                         "WHERE id = ?";
 
         try (Connection cn = Connectiondb.getConnection();
@@ -123,7 +124,8 @@ public class TramiteDAO {
             ps.setBoolean(2, pago);
             ps.setBoolean(3, sinMultas);
             ps.setString(4, observaciones);
-            ps.setInt(5, tramiteId);
+            ps.setString(5, nuevoEstado);
+            ps.setInt(6, tramiteId);
 
             return ps.executeUpdate() > 0;
 
@@ -133,15 +135,16 @@ public class TramiteDAO {
         }
     }
 
-    // Overload: para transacciones (usa la MISMA Connection)
+
     public boolean actualizarRequisitos(Connection cn,
                                         int tramiteId,
                                         boolean certificadoMedico,
                                         boolean pago,
                                         boolean sinMultas,
-                                        String observaciones) {
+                                        String observaciones,
+                                        String nuevoEstado) {
         String sql =
-                "UPDATE tramite SET certificadoMedico = ?, pago = ?, sinMultas = ?, observaciones = ? " +
+                "UPDATE tramite SET certificadoMedico = ?, pago = ?, sinMultas = ?, observaciones = ?, estado = ? " +
                         "WHERE id = ?";
 
         try (PreparedStatement ps = cn.prepareStatement(sql)) {
@@ -150,7 +153,8 @@ public class TramiteDAO {
             ps.setBoolean(2, pago);
             ps.setBoolean(3, sinMultas);
             ps.setString(4, observaciones);
-            ps.setInt(5, tramiteId);
+            ps.setString(5, nuevoEstado);
+            ps.setInt(6, tramiteId);
 
             return ps.executeUpdate() > 0;
 

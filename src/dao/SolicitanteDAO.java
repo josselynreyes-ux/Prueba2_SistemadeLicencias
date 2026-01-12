@@ -42,11 +42,11 @@ public class SolicitanteDAO {
             ps.setInt(1, solicitanteId);
             ps.setString(2, tipoLicencia);
 
-            // usuarioId puede ser null si todavía no se maneja
+
             if (usuarioId == null) ps.setNull(3, Types.INTEGER);
             else ps.setInt(3, usuarioId);
 
-            ps.executeUpdate(); // ejecuta el INSERT
+            ps.executeUpdate();
         }
     }
 }

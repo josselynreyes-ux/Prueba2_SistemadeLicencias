@@ -18,8 +18,6 @@ public class VerificacionRequisitosService {
             throw new IllegalArgumentException("Para aprobar, marque: Certificado médico, Pago y Sin multas.");
         }
 
-        // Nota: este Connection queda, aunque ahora TramiteDAO abre su propia conexión.
-        // Si quieres transacción real, habría que modificar TramiteDAO para recibir Connection.
         try (Connection cn = Connectiondb.getConnection()) {
             cn.setAutoCommit(false);
             try {
@@ -28,8 +26,10 @@ public class VerificacionRequisitosService {
                     throw new IllegalArgumentException("No existe trámite para esa cédula.");
                 }
 
-                // Actualiza SOLO requisitos (según método actual del DAO)
-                boolean ok = tramiteDAO.actualizarRequisitos(tramiteId, certMed, pago, sinMultas, obs);
+                // Actualizar requisitos + cambiar estado a EN_EXAMENES
+                boolean ok = tramiteDAO.actualizarRequisitos(
+                        tramiteId, certMed, pago, sinMultas, obs, "EN_EXAMENES"
+                );
                 if (!ok) throw new IllegalArgumentException("No se pudo actualizar requisitos.");
 
                 cn.commit();
@@ -48,7 +48,7 @@ public class VerificacionRequisitosService {
             throw new IllegalArgumentException("Cédula inválida. Debe tener 10 números.");
         }
 
-        // Regla que pusiste
+
         if (certMed && pago && sinMultas) {
             throw new IllegalArgumentException("No se puede rechazar si todos los requisitos están marcados. Use Aprobar.");
         }
@@ -65,7 +65,10 @@ public class VerificacionRequisitosService {
                     throw new IllegalArgumentException("No existe trámite para esa cédula.");
                 }
 
-                boolean ok = tramiteDAO.actualizarRequisitos(tramiteId, certMed, pago, sinMultas, obs);
+
+                boolean ok = tramiteDAO.actualizarRequisitos(
+                        tramiteId, certMed, pago, sinMultas, obs, "PENDIENTE"
+                );
                 if (!ok) throw new IllegalArgumentException("No se pudo actualizar requisitos.");
 
                 cn.commit();

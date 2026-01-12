@@ -20,7 +20,7 @@ public class UsuarioDAO {
                 u.setNombre(rs.getString("nombre"));
                 u.setUsername(rs.getString("username"));
                 u.setCedula(rs.getString("cedula"));
-                u.setContrasena(rs.getString("contrasena")); // OJO
+                u.setContrasena(rs.getString("contrasena"));
                 u.setRol(rs.getString("rol"));
                 u.setEstado(rs.getString("estado"));
                 return u;
@@ -41,11 +41,11 @@ public class UsuarioDAO {
             ps.setString(1, u.getNombre());
             ps.setString(2, u.getUsername());
             ps.setString(3, u.getCedula());
-            ps.setString(4, u.getContrasena()); // OJO
+            ps.setString(4, u.getContrasena());
             ps.setString(5, u.getRol());
             ps.setString(6, u.getEstado());
 
-            return ps.executeUpdate() > 0; // patrón JDBC [web:163]
+            return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -60,12 +60,12 @@ public class UsuarioDAO {
 
             ps.setString(1, u.getNombre());
             ps.setString(2, u.getUsername());
-            ps.setString(3, u.getContrasena()); // OJO
+            ps.setString(3, u.getContrasena());
             ps.setString(4, u.getRol());
             ps.setString(5, u.getEstado());
             ps.setString(6, u.getCedula());
 
-            return ps.executeUpdate() > 0; // patrón JDBC [web:163]
+            return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;

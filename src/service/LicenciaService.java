@@ -10,7 +10,7 @@ public class LicenciaService {
 
     private LicenciaDAO dao = new LicenciaDAO();
 
-    // Genera: guarda licencia + cambia estado del tramite
+
     public boolean generarLicenciaPorCedula(String cedula, String numeroLicencia,
                                             LocalDate fechaEmision, LocalDate fechaVencimiento) {
 

@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class LicenciaDAO {
 
-    // 1) Obtener el tramite.id por cédula (del solicitante)
+
     public Integer obtenerTramiteIdPorCedula(String cedula) {
         String sql =
                 "SELECT t.id " +
@@ -27,7 +27,7 @@ public class LicenciaDAO {
         return null;
     }
 
-    // 2) Insertar licencia y actualizar estado del trámite
+
     public boolean insertarLicenciaYActualizarTramite(Integer tramiteId,
                                                       String numeroLicencia,
                                                       Timestamp fechaEmision,
@@ -66,7 +66,7 @@ public class LicenciaDAO {
         }
     }
 
-    // 3) Datos del solicitante para el PDF (por cédula)
+
     public String[] obtenerDatosSolicitantePorCedula(String cedula) {
         String sql = "SELECT nombre, fecha_nacimiento FROM solicitante WHERE cedula = ?";
 

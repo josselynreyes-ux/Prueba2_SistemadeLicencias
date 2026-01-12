@@ -69,7 +69,6 @@ public class RegistrarExamenes extends JFrame {
                         return;
                     }
 
-                    // Llamar al service preguntar
                     service.ExamenService exService = new service.ExamenService();
                     String estado = exService.guardarPorCedula(cedula, notaTeorica, notaPractica);
 

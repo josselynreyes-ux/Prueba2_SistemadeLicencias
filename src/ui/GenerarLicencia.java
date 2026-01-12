@@ -19,7 +19,7 @@ public class GenerarLicencia extends JFrame{
     private final service.LicenciaService licenciaService = new service.LicenciaService();
     private String numeroGenerado = null;
 
-    // helper para celdas
+
     PdfPCell celda(String text, Font font, BaseColor bg) {
         PdfPCell c = new PdfPCell(new Phrase(text, font));
         c.setPadding(8);
@@ -67,7 +67,7 @@ public class GenerarLicencia extends JFrame{
                         return;
                     }
 
-                    // Número simple (puedes cambiarlo por tu lógica)
+
                     numeroGenerado = "LIC-" + cedula + "-" + System.currentTimeMillis();
 
                     LocalDate emision = LocalDate.parse(txtFechaEmision.getText().trim());       // AAAA-MM-DD
