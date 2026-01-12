@@ -5,7 +5,7 @@ CREATE TABLE usuario (
     nombre VARCHAR(50) NOT NULL,
     username VARCHAR(50) NOT NULL UNIQUE,
     cedula VARCHAR(20) NOT NULL UNIQUE,
-    contrasena_encryp VARCHAR(100) NOT NULL,
+    contrasena VARCHAR(100) NOT NULL,
     rol ENUM("ADMIN","ANALISTA") NOT NULL,
     estado ENUM("ACTIVO","INACTIVO") NOT NULL DEFAULT 'ACTIVO' 
 );
@@ -56,11 +56,9 @@ CREATE TABLE licencia (
     FOREIGN KEY (creado_por) REFERENCES usuario(id)
 );
 
--- DELIMITER //
--- CREATE PROCEDURE sp_total_licencias_por_fecha(IN p_fecha DATE, OUT p_total INT)
--- BEGIN
-    -- SELECT COUNT(*) INTO p_total
-    -- FROM licencia
-    -- WHERE fecha_emision = p_fecha;
--- END //
--- DELIMITER ;
+INSERT INTO usuario (nombre, username, cedula, contrasena, rol, estado)
+VALUES ('Administrador', 'admin', "1727053611", 'admin123', 'ADMIN', 'ACTIVO');
+
+INSERT INTO usuario (nombre, username, cedula, contrasena, rol, estado)
+VALUES ('Analista', 'analista', "1750926766", 'analista123', 'ANALISTA', 'ACTIVO');
+
