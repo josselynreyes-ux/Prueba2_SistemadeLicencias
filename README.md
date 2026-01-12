@@ -15,3 +15,7 @@ Descargar SistemaLicencias-LicenseFlow.exe
 **Analista**
 - Usuario: analista
 - Contraseña: analista123
+
+Video Explicativo
+--
+https://youtu.be/kDPXAlUlLDM
